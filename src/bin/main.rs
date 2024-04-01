@@ -1,6 +1,6 @@
 use anyhow::Result;
 use computerhardwaredb::{
-    types::{Bytes, CPU, Watt, GHz, CoolerType, SoldAt, CPUSocket, PCIExpressVersion,
+    types::{Bytes, CPU, Watt, GHz, CoolerType, SoldAt, CPUSocket, ExtensionBus,
             MemoryType, MTperSec, Shop, GraphicsModel, Price, MemorySubtype, MarketSegment,
             Architecture},
     value::Value,
@@ -54,6 +54,7 @@ fn main() -> Result<()> {
     let f = false;
     use Bytes::*;
     use Value::Missing;
+    use ExtensionBus::PCIe;
 
     let cpus: &[CPU] = &[
         CPU {
@@ -74,7 +75,7 @@ fn main() -> Result<()> {
             launch_date: "11/5/2020".try_into()?,
             cpu_socket: CPUSocket::AM4.into(),
             memory_channels: Missing,
-            pci_express_version: PCIExpressVersion::PCIe(4.0, Missing).into(),
+            pci_express_version: PCIe(4.0, Missing).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_specification: MTperSec(3200).into(),
             graphics_model: GraphicsModel::None.into(),
@@ -103,7 +104,7 @@ fn main() -> Result<()> {
             launch_date: "6/13/2023".try_into()?,
             cpu_socket: CPUSocket::AM5.into(),
             memory_channels: 2.into(),
-            pci_express_version: PCIExpressVersion::PCIe(
+            pci_express_version: PCIe(
                 5.0,
                 Value::SomeWithDoubts(24, "Native PCIe® Lanes (Total/Usable)  28 / 24
 Additional Usable PCIe Lanes from Motherboard  # huh ?
@@ -140,7 +141,7 @@ AMD B650   8x Gen4".into())
             launch_date: "3/8/2022".try_into()?,
             cpu_socket: "sWRX8".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, Missing).into(),
+            pci_express_version: PCIe(4.0, Missing).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -170,7 +171,7 @@ AMD B650   8x Gen4".into())
             launch_date: "2/28/2023".try_into()?,
             cpu_socket: "AM5".try_into()?,
             memory_channels: 2.into(),
-            pci_express_version: PCIExpressVersion::PCIe(5.0, Missing).into(),
+            pci_express_version: PCIe(5.0, Missing).into(),
             system_memory_type: MemoryType::DDR5.into(),
             system_memory_subtype: MemorySubtype::UDIMM.into(),
             system_memory_specification: Missing,
@@ -204,7 +205,7 @@ AMD B650   8x Gen4".into())
             launch_date: "7/7/2019".try_into()?,
             cpu_socket: "AM4".try_into()?,
             memory_channels: 2.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, Missing).into(),
+            pci_express_version: PCIe(4.0, Missing).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: MemorySubtype::UDIMM.into(),
             system_memory_specification: Missing,
@@ -237,7 +238,7 @@ AMD B650   8x Gen4".into())
                 "from https://en.wikipedia.org/wiki/Zen_2".into()),
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(), //  Per Socket Mem BW  204.8 GB/s
@@ -267,7 +268,7 @@ AMD B650   8x Gen4".into())
             launch_date: "9/18/2023".try_into()?,
             cpu_socket: "AM4".try_into()?,
             memory_channels: 6.into(),
-            pci_express_version: PCIExpressVersion::PCIe(5.0, 96.into()).into(),
+            pci_express_version: PCIe(5.0, 96.into()).into(),
             system_memory_type: MemoryType::DDR5.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(4800).into(),
@@ -298,7 +299,7 @@ AMD B650   8x Gen4".into())
             launch_date: "3/15/2021".try_into()?,
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -328,7 +329,7 @@ AMD B650   8x Gen4".into())
             launch_date: "3/15/2021".try_into()?,
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -361,7 +362,7 @@ AMD B650   8x Gen4".into())
             ),
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -391,7 +392,7 @@ AMD B650   8x Gen4".into())
             launch_date: "11/10/2022".try_into()?,
             cpu_socket: "SP5".try_into()?,
             memory_channels: 12.into(),
-            pci_express_version: PCIExpressVersion::PCIe(5.0, 128.into()).into(),
+            pci_express_version: PCIe(5.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR5.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(4800).into(),
@@ -421,7 +422,7 @@ AMD B650   8x Gen4".into())
             launch_date: "3/15/2021".try_into()?,
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -451,7 +452,7 @@ AMD B650   8x Gen4".into())
             launch_date: "3/15/2021".try_into()?,
             cpu_socket: "SP3".try_into()?,
             memory_channels: 8.into(),
-            pci_express_version: PCIExpressVersion::PCIe(4.0, 128.into()).into(),
+            pci_express_version: PCIe(4.0, 128.into()).into(),
             system_memory_type: MemoryType::DDR4.into(),
             system_memory_subtype: Missing,
             system_memory_specification: MTperSec(3200).into(),
@@ -481,7 +482,7 @@ AMD B650   8x Gen4".into())
             launch_date: "9/27/2022".try_into()?,
             cpu_socket: "AM5".try_into()?,
             memory_channels: 2.into(),
-            pci_express_version: PCIExpressVersion::PCIe(5.0, Missing).into(),
+            pci_express_version: PCIe(5.0, Missing).into(),
             system_memory_type: MemoryType::DDR5.into(),
             system_memory_subtype: MemorySubtype::UDIMM.into(),
             system_memory_specification: Missing,
@@ -512,7 +513,7 @@ AMD B650   8x Gen4".into())
             launch_date: "10/19/2023".try_into()?,
             cpu_socket: "sTR5".try_into()?,
             memory_channels: 4.into(),
-            pci_express_version: PCIExpressVersion::PCIe(5.0, Missing).into(),
+            pci_express_version: PCIe(5.0, Missing).into(),
             system_memory_type: MemoryType::DDR5.into(),
             system_memory_subtype: MemorySubtype::RDIMM.into(),
             system_memory_specification: MTperSec(5200).into(),
@@ -544,7 +545,7 @@ AMD B650   8x Gen4".into())
             launch_date: "Q1'20".try_into()?,
             cpu_socket: "FCLGA3647".try_into()?,
             memory_channels: 6.into(), // "Max # of Memory Channels", max? ah if all slots used?
-            pci_express_version: PCIExpressVersion::PCIe(3.5, 48.into()).into(),
+            pci_express_version: PCIe(3.5, 48.into()).into(),
             system_memory_type: MemoryType::DDR4.into(), // DDR4-2933
             system_memory_subtype: Missing,
             //  Max Memory Size (dependent on memory type) 1 TB
@@ -575,7 +576,7 @@ AMD B650   8x Gen4".into())
         //     launch_date: "".try_into()?,
         //     cpu_socket: "".try_into()?,
         //     memory_channels: .into(),
-        //     pci_express_version: PCIExpressVersion::PCIe().into(),
+        //     pci_express_version: PCIe().into(),
         //     system_memory_type: MemoryType::.into(),
         //     system_memory_subtype: MemorySubtype::.into(),
         //     system_memory_specification: MTperSec().into(),

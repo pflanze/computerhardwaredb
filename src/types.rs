@@ -22,7 +22,7 @@ pub enum MemorySubtype {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum PCIExpressVersion {
+pub enum ExtensionBus {
     /// version, lanes
     PCIe(f32, Value<u16>),
 }
@@ -158,7 +158,7 @@ pub struct CPU {
     pub launch_date: Value<Date>,
     pub cpu_socket: Value<CPUSocket>,
     pub memory_channels: Value<u8>,
-    pub pci_express_version: Value<PCIExpressVersion>,
+    pub pci_express_version: Value<ExtensionBus>,
     pub system_memory_type: Value<MemoryType>,
     pub system_memory_subtype: Value<MemorySubtype>,
     pub system_memory_specification: Value<MTperSec>,
