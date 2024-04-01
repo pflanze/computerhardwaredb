@@ -692,7 +692,7 @@ AM4, 3.50 GHz, 16 -Core".into(),
             delivered: "Delivered between Tue 2.4. and Mon 8.4.
 loicbujard9
 Buy used from
-loicbujard9 · Member since 2014".into(), //   # OH WTF
+loicbujard9 · Member since 2014".into(), // Oh careful
         },
         SoldAt {
             url: "https://www.digitec.ch/en/s1/product/amd-ryzen-threadripper-pro-5955wx-swrx8-4-ghz-16-core-processors-22516524".into(),

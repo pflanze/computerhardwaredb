@@ -1,3 +1,6 @@
+//! A set implementation that's nice to use (offers `set` macro). It
+//! currently just uses `HashSet` internally.
+
 use std::{collections::HashSet, ops::Deref, hash::Hash};
 
 pub struct Set<T: Hash + Eq>(HashSet<T>);

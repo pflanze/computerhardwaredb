@@ -13,7 +13,7 @@ pub fn pindex_by<K: Debug + Eq + Hash, T: Debug>(
     let mut m = HashMap::new();
     for item in items {
         if let Some(old) = m.insert(key(item), item) {
-            bail!("duplicate primary key {:?} used in item {item:#?} and previously {old:#?}",
+            bail!("duplicate unique key {:?} used in item {item:#?} and previously {old:#?}",
                   key(item));
         }
     }
@@ -35,7 +35,7 @@ pub fn pindex_by_foreign<'t, K: Debug + Eq + Hash, T: Debug, T2>(
             bail!("value {k:?} for foreign key {keyname} does not exist");
         }
         if let Some(old) = m.insert(k, item) {
-            bail!("duplicate primary key {:?} used in item {item:#?} and previously {old:#?}",
+            bail!("duplicate unique key {:?} used in item {item:#?} and previously {old:#?}",
                   key(item));
         }
     }

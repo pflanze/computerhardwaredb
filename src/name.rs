@@ -1,5 +1,5 @@
-/// This thing again, typed string wrappers
 
+/// Define string wrappers for type safety
 #[macro_export]
 macro_rules! def_name_type {
     {$name:tt} => {

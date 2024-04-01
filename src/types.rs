@@ -237,7 +237,6 @@ pub enum Usage {
     Mobile,
     Desktop,
     ServerOrEmbedded,
-    // unused?:
     Server,
     Embedded,
 }
@@ -425,17 +424,23 @@ impl TryFrom<(&str, u8)> for Brand {
 }
 
 
+/// Specified as "Market segment" or "Platform" by AMD.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum MarketSegment {
     EnthusiastDesktop,
-    Server, // well, specified as "Platform": "Server"
+    Server,
 }
 
 
 
+/// Specified as "Product line" by AMD; there's duplication/overlap
+/// with `Usage` specification with `Brand`'s `info` method, todo:
+/// verify at runtime. E.g.:
+
+///     "AMD Ryzen™ 9 Desktop Processors" == ProductLine(Brand::Ryzen9, Usage::Desktop)
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ProductLine(pub Brand, pub Value<Usage>);
-// "AMD Ryzen™ 9 Desktop Processors" == ProductLine(Brand::Ryzen9, Usage::Desktop)
 
 impl TryFrom<&str> for Value<ProductLine> {
     type Error = anyhow::Error;

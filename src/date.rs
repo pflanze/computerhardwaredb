@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize, ser::SerializeStruct};
 use chrono::{NaiveDate, Datelike};
 
 
-// and again, too ? chrono is pretty unbelievable, this required GPT.
+// I have a hard time remembering chrono, this required GPT.
 pub fn unixtime_from_naivedate(nd: NaiveDate) -> i64 {
     nd.and_hms_opt(0, 0, 0).unwrap().timestamp()
 }
