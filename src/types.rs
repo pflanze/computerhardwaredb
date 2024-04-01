@@ -68,7 +68,7 @@ pub enum CPUSocket {
     SP3,
     SP5, // LGA-6096
     SP6,
-    STR5,
+    STR5, // really sTR5
 
     // Intel:
     FCLGA3647,
@@ -93,7 +93,6 @@ impl TryFrom<&str> for CPUSocket {
     }
 }
 
-// Why is this now needed, thought it went automatically?
 impl TryFrom<&str> for Value<CPUSocket> {
     type Error = anyhow::Error;
 
@@ -139,7 +138,6 @@ impl TryFrom<&str> for Architecture {
     }
 }
 
-// Why is this now needed, thought it went automatically?
 impl TryFrom<&str> for Value<Architecture> {
     type Error = anyhow::Error;
 
