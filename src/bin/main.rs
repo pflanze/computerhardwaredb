@@ -916,7 +916,7 @@ Only 1 item in stock".into(),
     let offers = sold_at.iter().map(|offer| -> Result<_> {
         let cpu = cpus_by_name.get(&offer.article_name).expect("checked already");
         let perf = anticipated_compilation_performance(cpu)?;
-        let value = perf / (offer.price.chf() as f32);
+        let value = perf / (offer.price.in_chf() as f32);
         Ok((offer, perf, value))
     });
     let offers = Box::new(offers).try_collect_sorted_by(on(|(_, _perf, _value)| _value,

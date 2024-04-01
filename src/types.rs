@@ -198,7 +198,7 @@ pub enum Price {
 }
 
 impl Price {
-    pub fn chf(self) -> u16 {
+    pub fn in_chf(self) -> u16 {
         match self {
             Price::CHF(v) => v
         }
