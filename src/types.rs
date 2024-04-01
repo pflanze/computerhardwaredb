@@ -32,10 +32,21 @@ pub enum CoolerType {
     LiquidRecommended, // "Liquid cooler recommended for optimal performance"
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum Bytes {
     KB(u32),
     MB(u32),
+    // GB(u32),
+}
+
+impl Bytes {
+    pub fn in_bytes(self) -> u64 {
+        match self {
+            Bytes::KB(v) => v as u64 * 1024,
+            Bytes::MB(v) => v as u64 * 1024 * 1024,
+            // Bytes::GB(v) => v as u64 * 1024 * 1024,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
