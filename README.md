@@ -91,3 +91,9 @@ that are defined to be of type `Value<...>`--the following uses
 In this case, the CPU does not have built-in graphics, but that info
 was specified. This is distinct from `Missing`, which would mean that
 the information wasn't provided by the manufacturer.
+
+### Serde
+
+The code supports serde, but doesn't currently make use of it (not
+sure what it would be useful for).
+
